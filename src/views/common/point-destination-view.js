@@ -5,7 +5,7 @@ export default class PointDestinationView extends View {
   constructor() {
     super();
 
-    this.classList.add('event__field-group--destination');
+    this.classList.add('event__field-group--destination', 'event__field-group');
   }
 
   /**
