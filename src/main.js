@@ -12,6 +12,18 @@ const AUTH = 'Basic rjycgtrn321';
  * @type {Store<Point>}
  */
 const pointsStore = new Store(`${BASE}/points`, AUTH);
+
+/**
+ * @type {Store<Destination>}
+ */
+const destinationsStore = new Store(`${BASE}/destinations`, AUTH);
+
+/**
+ * @type {Store<Offers>}
+ */
+const offerGroupsStore = new Store(`${BASE}/offers`, AUTH);
+
+
 pointsStore.list().then(async (items) => {
   const {log} = console;
 
@@ -32,5 +44,9 @@ pointsStore.list().then(async (items) => {
   log('Points: Update', await pointsStore.update(item));
 
   log('Points: Delete', await pointsStore.delete(item.id));
+
+  log('Destination: List', await destinationsStore.list());
+
+  log('Offers: List', await offerGroupsStore.list());
 });
 

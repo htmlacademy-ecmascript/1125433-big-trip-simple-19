@@ -29,8 +29,8 @@
 
 /**
  * @typedef OfferGroup
- * @prop {string} type
- * @prop {Offer[]} offers
+ * @prop {string} type это идентефикатор
+ * @prop {Offer[]} offers это items   все эти идентефикаторы привести к строке
  */
 
 /**
