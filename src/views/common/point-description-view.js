@@ -5,7 +5,7 @@ export default class PointDescriptionView extends View {
   constructor() {
     super();
 
-    this.classList.add('event__section--destination');
+    this.classList.add('event__section--destination', 'event__section');
   }
 
   /**

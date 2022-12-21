@@ -5,7 +5,7 @@ export default class PointTimeView extends View {
   constructor() {
     super();
 
-    this.classList.add('event__field-group--time');
+    this.classList.add('event__field-group--time','event__field-group');
   }
 
   /**

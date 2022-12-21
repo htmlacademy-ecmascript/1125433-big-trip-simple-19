@@ -5,7 +5,7 @@ export default class PointPriceView extends View {
   constructor() {
     super();
 
-    this.classList.add('event__field-group--price');
+    this.classList.add('event__field-group--price', 'event__field-group');
   }
 
   /**

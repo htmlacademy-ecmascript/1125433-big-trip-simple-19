@@ -5,7 +5,7 @@ export default class PointOffersView extends View {
   constructor() {
     super();
 
-    this.classList.add('event__section--offers');
+    this.classList.add('event__section--offers', 'event__section');
   }
 
   /**
