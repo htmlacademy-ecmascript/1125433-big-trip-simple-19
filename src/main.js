@@ -53,31 +53,7 @@ Promise.all(
 )
   .then( async () => {
     table(pointsModel.list());
-    // log('Points', pointsModel.listAll());
-    // log('Points: item', pointsModel.item());
-    // log('PointsID: findById', pointsModel.findById('1'));
-    // log('Destinations', destinationsModel.listAll());
-    // log('Offer groups', offerGroupsModel.listAll());
-    // log('Points: findIndexById', pointsModel.findIndexById('3'));
-    // const logEvent = (event) => log(event.type, event.detail);
 
-    // pointsModel.addEventListener('add', logEvent);
-    // pointsModel.addEventListener('update', logEvent);
-
-    // const item = pointsModel.item();
-    // item.basePrice = 100;
-    // item.startDate = new Date().toJSON();
-    // item.endDate = item.startDate;
-    // item.destinationId = '1';
-    // item.offers = [];
-    // item.type = 'bus';
-
-    // const addedItem = await pointsModel.add(item);
-
-    // addedItem.basePrice = 200;
-    // addedItem.type = 'taxi';
-
-    // await pointsModel.update(addedItem);
   })
 
   .catch((error) => {
