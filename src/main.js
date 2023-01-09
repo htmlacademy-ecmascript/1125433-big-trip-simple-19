@@ -60,6 +60,6 @@ Promise.all(
   })
 
   .catch((error) => {
-    console.log(error);
+    log(error);
   });
 

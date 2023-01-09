@@ -20,6 +20,7 @@ export default class ListPresenter extends Presenter {
    */
   createPointViewState(point) {
     return {
+      date: point.startDate,
       offers: []
     };
   }
