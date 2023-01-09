@@ -93,3 +93,8 @@
  * @prop {string} title
  * @prop {string} price
  */
+
+/**
+ * @typedef {import('./views/list-view').default} ListView
+ */
+
