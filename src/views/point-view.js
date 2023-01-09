@@ -63,9 +63,6 @@ export default class PointView extends View {
 
     this.querySelector('.event__selected-offers').innerHTML = offersHtml;
   }
-
-
-
 }
 
 customElements.define(String(PointView), PointView);
