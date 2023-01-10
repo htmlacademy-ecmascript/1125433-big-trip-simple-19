@@ -1,8 +1,4 @@
 /**
- * /**
- * @template Item
- * @typedef {import('./store').default<Item>} Store
- *
  * @typedef Point
  * @prop {number} base_price
  * @prop {string} date_from
@@ -39,12 +35,15 @@
  * @prop {string} title
  * @prop {number} price
  */
-
+/**
+ * @template Item
+ * @typedef {import('./store').default<Item>} Store
+ *
 /**
  * @typedef {import('./adapters/adapter').default} Adapter
  * @typedef {import('./adapters/point-adapter').default} PointAdapter
  * @typedef {import('./adapters/destination-adapter').default} DestinationAdapter
- * @typedef {import('./adapters/offer-group-adapter').default} OfferGroupAdapter
+ * @typedef {import('./adapters/offerGroup-adapter').default} OfferGroupAdapter
  */
 
 /**
