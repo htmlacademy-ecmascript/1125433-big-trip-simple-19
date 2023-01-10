@@ -1,6 +1,6 @@
 import Adapter from './adapter';
 
-export default class offerGroupAdapter extends Adapter {
+export default class OfferGroupAdapter extends Adapter {
 /**
    * @param {OfferGroup} data
   */
