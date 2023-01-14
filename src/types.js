@@ -25,8 +25,8 @@
 
 /**
  * @typedef OfferGroup
- * @prop {string} type это идентефикатор
- * @prop {Offer[]} offers это items   все эти идентефикаторы привести к строке
+ * @prop {string} type
+ * @prop {Offer[]} offers
  */
 
 /**
@@ -35,10 +35,12 @@
  * @prop {string} title
  * @prop {number} price
  */
+
 /**
  * @template Item
  * @typedef {import('./store').default<Item>} Store
- *
+ */
+
 /**
  * @typedef {import('./adapters/adapter').default} Adapter
  * @typedef {import('./adapters/point-adapter').default} PointAdapter
@@ -74,6 +76,7 @@
  * @template {Adapter} ItemAdapter
  * @typedef {import('./models/collection-model').default<Item,ItemAdapter>} CollectionModel
  */
+
 /**
  * @typedef PointViewState
  * @prop {string} date
@@ -88,12 +91,28 @@
  */
 
 /**
+ * @typedef {import('./views/filter-view').default} FilterView
+ * @typedef {import('./views/sort-view').default} SortView
+ * @typedef {import('./views/list-view').default} ListView
+ * @typedef {import('./views/new-point-editor-view').default} NewPointEditorView
+ */
+
+/**
  * @typedef OfferViewState
  * @prop {string} title
  * @prop {string} price
  */
 
 /**
- * @typedef {import('./views/list-view').default} ListView
+ * @typedef OfferToggleViewState
+ * @prop {string} id
+ * @prop {string} title
+ * @prop {string} price
+ * @prop {boolean} checked
  */
 
+/**
+ * @typedef OptionViewState
+ * @prop {string} title
+ * @prop {string} value
+ */

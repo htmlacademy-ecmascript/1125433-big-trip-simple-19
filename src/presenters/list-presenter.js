@@ -1,3 +1,5 @@
+import { pointIconMap, pointTitleMap } from '../maps';
+import { formatDate, formatNumber, formatTime } from '../utils';
 import Presenter from './presenter';
 
 /**
@@ -10,18 +12,38 @@ export default class ListPresenter extends Presenter {
   }
 
   updateView() {
-    this.view.setItems(
-      this.pointsModel.list().map(this.createPointViewState, this)
-    );
+    const points = this.pointsModel.list();
+    const pointViewStates = points.map(this.createPointViewState, this);
+
+    this.view.setItems(pointViewStates);
   }
+
 
   /**
    * @param {PointAdapter} point
    */
   createPointViewState(point) {
+    const destination = this.destinationsModel.findById(point.destinationId);
+    const offerGroup = this.offerGroupsModel.findById(point.type);
+    const OfferViewStates = offerGroup.items
+      .filter((offer) =>
+        point.offerIds.includes(offer.id)
+      )
+      .map((offer) => ({
+        title: offer.title,
+        price: formatNumber(offer.price),
+      }));
+
     return {
-      date: point.startDate,
-      offers: []
+      date: formatDate(point.startDate),
+      icon: pointIconMap[point.type],
+      title: `${pointTitleMap[point.type]} ${destination.name}`,
+      startTime: formatTime(point.startDate),
+      startDate: point.startDate,
+      endTime: formatTime(point.endDate),
+      endDate: point.endDate,
+      basePrice: formatNumber(point.basePrice),
+      offers: OfferViewStates,
     };
   }
 }
