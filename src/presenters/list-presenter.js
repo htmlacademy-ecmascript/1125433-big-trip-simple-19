@@ -9,6 +9,7 @@ export default class ListPresenter extends Presenter {
   constructor() {
     super(...arguments);
     this.updateView();
+    this.pointsModel.addEventListener('filter', this.handelPointsModelFilter.bind(this));
   }
 
   updateView() {
@@ -45,5 +46,9 @@ export default class ListPresenter extends Presenter {
       basePrice: formatNumber(point.basePrice),
       offers: OfferViewStates,
     };
+  }
+
+  handelPointsModelFilter() {
+    this.updateView();
   }
 }
