@@ -1,5 +1,5 @@
 import View from './view';
-import {html} from '../utils';
+// import {html} from '../utils';
 
 export default class RadioGroupView extends View {
   /**
