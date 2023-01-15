@@ -1,6 +1,6 @@
 import View from './view';
 import {html} from '../utils';
-// import './point-view.css';
+import './point-view.css';
 // добавить css лоадер
 
 export default class PointView extends View {
