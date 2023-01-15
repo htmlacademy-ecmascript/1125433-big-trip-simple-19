@@ -17,6 +17,8 @@ import {filterCallbackMap, sortCallbackMap} from './maps';
 
 import ListPresenter from './presenters/list-presenter';
 import FilterPresenter from './presenters/filter-presenter';
+import SortPresenter from './presenters/sort-presenter';
+import sortView from './views/sort-view';
 
 const BASE = 'https://19.ecmascript.pages.academy/big-trip-simple';
 const AUTH = 'Basic rjycgtrn321';
@@ -59,6 +61,7 @@ Promise.all(
 )
   .then( async () => {
     new FilterPresenter(filterView, models);
+    new SortPresenter(sortView, models);
     new ListPresenter(listView, models);
   })
 
