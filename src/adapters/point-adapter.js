@@ -12,7 +12,7 @@ export default class PointAdapter extends Adapter {
     this.endDate = data.date_to;
     this.destinationId = String(data.destination);
     this.id = data.id;
-    this.offers = data.offers?.map(String);
+    this.offerIds = data.offers?.map(String);
     this.type = data.type;
   }
 
@@ -35,7 +35,7 @@ export default class PointAdapter extends Adapter {
       'date_to': this.endDate,
       'destination': Number(this.destinationId),
       'id': this.id,
-      'offers': this.offers?.map(Number),
+      'offers': this.offerIds?.map(Number),
       'type': this.type
     };
   }
