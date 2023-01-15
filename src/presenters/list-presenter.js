@@ -50,6 +50,5 @@ export default class ListPresenter extends Presenter {
 
   handelPointsModelFilter() {
     this.updateView();
-    console.log('test')
   }
 }
