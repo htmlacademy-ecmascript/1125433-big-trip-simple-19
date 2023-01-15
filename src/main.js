@@ -18,7 +18,7 @@ import {filterCallbackMap, sortCallbackMap} from './maps';
 import ListPresenter from './presenters/list-presenter';
 import FilterPresenter from './presenters/filter-presenter';
 import SortPresenter from './presenters/sort-presenter';
-import sortView from './views/sort-view';
+import SortView from './views/sort-view';
 
 const BASE = 'https://19.ecmascript.pages.academy/big-trip-simple';
 const AUTH = 'Basic rjycgtrn321';
@@ -41,7 +41,7 @@ const destinationsModel = new CollectionModel({
   adapt: (item) => new DestinationAdapter(item)
 });
 /**
- * @type {Store<Offers>}
+ * @type {Store<OfferGroup>}
  */
 const offerGroupsStore = new Store(`${BASE}/offers`, AUTH);
 const offerGroupsModel = new CollectionModel({
@@ -53,6 +53,7 @@ const models = [pointsModel, destinationsModel, offerGroupsModel];
 
 const filterView = document.querySelector(String(FilterView));
 const listView = document.querySelector(String(ListView));
+const sortView = document.querySelector(String(SortView));
 
 const {log} = console;
 
