@@ -4,6 +4,7 @@ import './views/sort-view';
 import './views/point-view';
 import ListView from './views/list-view';
 import './views/new-point-editor-view';
+import NewPointEditorView from './views/new-point-editor-view';
 
 import Store from './store';
 
@@ -18,6 +19,9 @@ import {filterCallbackMap, sortCallbackMap} from './maps';
 import ListPresenter from './presenters/list-presenter';
 import FilterPresenter from './presenters/filter-presenter';
 import SortPresenter from './presenters/sort-presenter';
+import NewPointButtonPresenter from './presenters/new-point-button-presenter';
+import NewPointEditorPresenter from './presenters/new-point-editor-presenter';
+
 import SortView from './views/sort-view';
 
 const BASE = 'https://19.ecmascript.pages.academy/big-trip-simple';
@@ -51,9 +55,11 @@ const offerGroupsModel = new CollectionModel({
 
 const models = [pointsModel, destinationsModel, offerGroupsModel];
 
+const newPointButtonView = document.querySelector('.trip-main__event-add-btn');
 const filterView = document.querySelector(String(FilterView));
 const listView = document.querySelector(String(ListView));
 const sortView = document.querySelector(String(SortView));
+const newPointEditorView = new NewPointEditorView(listView);
 
 const {log} = console;
 
@@ -61,6 +67,8 @@ Promise.all(
   models.map((model) => model.ready())
 )
   .then( async () => {
+    new NewPointButtonPresenter(newPointButtonView, models);
+    new NewPointEditorPresenter(newPointEditorView, models);
     new FilterPresenter(filterView, models);
     new SortPresenter(sortView, models);
     new ListPresenter(listView, models);

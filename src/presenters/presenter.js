@@ -25,6 +25,7 @@ export default class Presenter {
     this.offerGroupsModel = offerGroupsModel;
 
     window.addEventListener('popstate', this.handleWindowPopState.bind(this));
+    window.requestAnimationFrame(() => this.handleNavigation());
   }
 
   get location() {
