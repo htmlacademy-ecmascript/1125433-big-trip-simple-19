@@ -68,10 +68,10 @@ Promise.all(
 )
   .then( async () => {
     new NewPointButtonPresenter(newPointButtonView, models);
-    new NewPointEditorPresenter(newPointEditorView, models);
     new FilterPresenter(filterView, models);
     new SortPresenter(sortView, models);
     new ListPresenter(listView, models);
+    new NewPointEditorPresenter(newPointEditorView, models);
   })
 
   .catch((error) => {

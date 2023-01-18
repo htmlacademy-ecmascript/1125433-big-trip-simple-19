@@ -7,10 +7,18 @@ import PointPriceView from './common/point-price-view';
 import PointOffersView from './common/point-offers-view';
 import PointDescriptionView from './common/point-description-view';
 
+
+/**
+ * @implements {EventListenerObject}
+ */
 export default class NewPointEditorView extends View {
-  constructor() {
+  constructor(listView) {
     super();
 
+    /**
+     * @type {ListView}
+     */
+    this.listView = listView;
     this.classList.add('trip-events__item');
   }
 
@@ -31,12 +39,33 @@ export default class NewPointEditorView extends View {
         </header>
         <section class="event__details">
           <${PointOffersView} style="display:block"></${PointOffersView}>
-          
           <${PointDescriptionView} style="display:block"></${PointDescriptionView}>
-          
         </section>
       </form>
     `;
+  }
+
+  open() {
+    this.listView.prepend(this);
+    document.addEventListener('keydown', this);
+  }
+
+  close(notify = true) {
+    this.remove();
+    document.removeEventListener('keydown', this);
+
+    if(notify) {
+      this.dispatchEvent(new CustomEvent('close'));
+    }
+  }
+
+  /**
+   * @param {KeyboardEvent} event
+   */
+  handleEvent(event) {
+    if(event.key === 'Escape') {
+      this.close();
+    }
   }
 }
 

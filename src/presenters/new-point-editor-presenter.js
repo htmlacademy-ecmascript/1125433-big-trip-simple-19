@@ -6,6 +6,8 @@ import Presenter from './presenter';
 export default class NewPointEditorPresenter extends Presenter {
   constructor() {
     super(...arguments);
+
+    this.view.addEventListener('submit', this.handleViewSubmit.bind(this));
   }
 
   /**
@@ -13,9 +15,16 @@ export default class NewPointEditorPresenter extends Presenter {
    */
   handleNavigation() {
     if(this.location.pathname === '/new') {
-      console.log('открыть')
+      this.view.open();
     } else {
-      console.log('pfrhsnm')
+      this.view.close();
     }
+  }
+
+  /**
+   * @param {SubmitEvent} event
+  */
+  handleViewSubmit(event) {
+    event.preventDefault();
   }
 }
