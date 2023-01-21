@@ -1,3 +1,6 @@
+/**
+ * @template Item
+ */
 export default class Store {
   #base;
   #auth;
@@ -12,7 +15,7 @@ export default class Store {
   }
 
   /**
- * @return {Promise<item[]>}
+* @return {Promise<Item[]>}
  */
   list () {
     return this.request('/', {

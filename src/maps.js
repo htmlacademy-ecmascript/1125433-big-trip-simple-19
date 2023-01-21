@@ -1,25 +1,46 @@
-import { FilterType, SortType, PointType } from './enums';
+import {FilterType, PointType, SortType} from './enums';
+
+const filterTitleMap = {
+  [FilterType.EVERYTHING]: 'Everything',
+  [FilterType.FUTURE]: 'Future',
+};
 
 /**
  * @type {Record<string,FilterCallback<PointAdapter>>}
  */
-export const filterCallbackMap = {
+const filterCallbackMap = {
   [FilterType.EVERYTHING]: () => true,
-  [FilterType.FUTURE]: (point) => point.endDateAsNumber > Date.now(),
+  [FilterType.FUTURE]: (point) => Date.now() < point.endDateAsNumber,
+};
+
+const sortTitleMap = {
+  [SortType.DAY]: 'Day',
+  [SortType.EVENT]: 'Event',
+  [SortType.TIME]: 'Time',
+  [SortType.PRICE]: 'Price',
+  [SortType.OFFERS]: 'Offers',
+};
+
+const sortDisabilityMap = {
+  [SortType.DAY]: false,
+  [SortType.EVENT]: false,
+  [SortType.TIME]: false,
+  [SortType.PRICE]: false,
+  [SortType.OFFERS]: false,
 };
 
 /**
  * @type {Record<string,SortCallback<PointAdapter>>}
  */
-export const sortCallbackMap = {
+const sortCallbackMap = {
   [SortType.DAY]: (point, nextPoint) => point.startDateAsNumber - nextPoint.startDateAsNumber,
   [SortType.EVENT]: () => 0,
   [SortType.TIME]: () => 0,
   [SortType.PRICE]: (point, nextPoint) => nextPoint.basePrice - point.basePrice,
-  [SortType.OFFERS]: () => 0
+  [SortType.OFFERS]: () => 0,
 };
 
-export const pointTitleMap = {
+const pointTitleMap = {
   [PointType.TAXI]: 'Taxi',
   [PointType.BUS]: 'Bus',
   [PointType.TRAIN]: 'Train',
@@ -28,9 +49,19 @@ export const pointTitleMap = {
   [PointType.FLIGHT]: 'Flight',
   [PointType.CHECK_IN]: 'Check-in',
   [PointType.SIGHTSEEING]: 'Sightseeing',
-  [PointType.RESTAURANT]: 'Restaurant'
+  [PointType.RESTAURANT]: 'Restaurant',
 };
 
-export const pointIconMap = Object.fromEntries(
+const pointIconMap = Object.fromEntries(
   Object.values(PointType).map((value) => [value, `img/icons/${value}.png`])
 );
+
+export {
+  filterTitleMap,
+  filterCallbackMap,
+  sortTitleMap,
+  sortDisabilityMap,
+  sortCallbackMap,
+  pointTitleMap,
+  pointIconMap,
+};
