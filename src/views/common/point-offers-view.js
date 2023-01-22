@@ -49,7 +49,6 @@ export default class PointOffersView extends View {
     const optionsHtml = states.map(this.createOptionHtml).join('');
 
     this.querySelector('div').innerHTML = optionsHtml;
-    // this.querySelector('div').insertAdjacentElement('beforebegin', optionsHtml);
   }
 
   getValues() {

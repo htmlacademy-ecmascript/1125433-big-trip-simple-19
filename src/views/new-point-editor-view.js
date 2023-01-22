@@ -69,12 +69,12 @@ export default class NewPointEditorView extends View {
           <button class="event__reset-btn" type="reset">Cancel</button>
         </header>
         <section class="event__details">
-          <${PointOffersView} style="display:block"></${PointOffersView}>
-          <${PointDescriptionView} style="display:block"></${PointDescriptionView}>
+          <${PointOffersView}></${PointOffersView}> 
+          <${PointDescriptionView}></${PointDescriptionView}>
         </section>
       </form>
     `;
-  }
+  }//TODO add css styles display block to PointOffersView and PointDescriptionView
 
   open() {
     this.listView.prepend(this);
