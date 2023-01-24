@@ -19,7 +19,7 @@ export default class NewPointEditorPresenter extends Presenter {
     this.view.pointTypeView.addEventListener('change', this.handlePointTypeViewChange.bind(this));
 
     this.view.pointDestinationView.setOptions(destinationOptions);
-    this.view.pointDestinationView.addEventListener('change', this.handleDestinationViewInput.bind(this));
+    this.view.pointDestinationView.addEventListener('input', this.handleDestinationViewInput.bind(this));
 
     this.view.pointTimeView.setConfig({
       dateFormat: 'd/m/y H:i',
