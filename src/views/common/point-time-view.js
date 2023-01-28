@@ -1,27 +1,29 @@
 import View from './../view';
 import {html} from '../../utils';
+import createCalendar from 'flatpickr';
+import 'flatpickr/dist/flatpickr.css';
 
 export default class PointTimeView extends View {
 
-  // /**
-  //  * @type {Calendar}
-  //  */
-  // #startDateCalendar;
+  /**
+   * @type {Calendar}
+  */
+  #startDateCalendar;
 
-  // /**
-  //   * @type {CalendarConfig}
-  //   */
-  // #startDateConfig;
+  /**
+    * @type {CalendarConfig}
+  */
+  #startDateConfig;
 
-  // /**
-  //   * @type {Calendar}
-  //   */
-  // #endDateCalendar;
+  /**
+    * @type {Calendar}
+  */
+  #endDateCalendar;
 
-  // /**
-  //   * @type {CalendarConfig}
-  //   */
-  // #endDateConfig;
+  /**
+    * @type {CalendarConfig}
+  */
+  #endDateConfig;
 
   constructor() {
     super();
@@ -44,56 +46,57 @@ export default class PointTimeView extends View {
     `;
   }
 
-  // /**
-  //  * @param {CalendarConfig} config
-  //  */
+  /**
+   * @param {CalendarConfig} config
+   */
   setConfig(config) {
     const defaultConfig = {
+      allowInput: true,
       enableTime: true,
       monthSelectorType: 'static',
       static: true,
     };
 
     // @ts-ignore
-    // this.#startDateConfig = {
-    //   onChange: ([value]) => this.#endDateCalendar.set('minDate', value),
-    //   ...defaultConfig,
-    //   ...config,
-    // };
+    this.#startDateConfig = {
+      onChange: ([value]) => this.#endDateCalendar.set('minDate', value),
+      ...defaultConfig,
+      ...config,
+    };
 
     // @ts-ignore
-    // this.#endDateConfig = {
-    //   ...defaultConfig,
-    //   ...config,
-    // };
+    this.#endDateConfig = {
+      ...defaultConfig,
+      ...config,
+    };
   }
 
-  // createCalendars() {
-  //   const [startDateView, endDateView] = this.querySelectorAll('input');
+  createCalendars() {
+    const [startDateView, endDateView] = this.querySelectorAll('input');
 
-  //   this.#startDateCalendar = createCalendar(startDateView, this.#startDateConfig);
-  //   this.#endDateCalendar = createCalendar(endDateView, this.#endDateConfig);
-  // }
+    this.#startDateCalendar = createCalendar(startDateView, this.#startDateConfig);
+    this.#endDateCalendar = createCalendar(endDateView, this.#endDateConfig);
+  }
 
   destroyCalendars() {
-    // this.#startDateCalendar?.destroy();
-    // this.#endDateCalendar?.destroy();
+    this.#startDateCalendar?.destroy();
+    this.#endDateCalendar?.destroy();
   }
 
-  // /**
-  //  * @param {string[]} values
-  //  */
-  // setValues(values) {
-  //   const [startDate, endDate] = values;
+  /**
+    * @param {string[]} values
+  */
+  setValues(values) {
+    const [startDate, endDate] = values;
 
-  //   // this.#startDateCalendar.setDate(startDate, true);
-  //   this.#endDateCalendar.setDate(endDate);
-  // }
+    this.#startDateCalendar.setDate(startDate, true);
+    this.#endDateCalendar.setDate(endDate);
+  }
 
   getValues() {
     return [
-      // this.#startDateCalendar.selectedDates[0]?.toJSON(),
-      // this.#endDateCalendar.selectedDates[0]?.toJSON(),
+      this.#startDateCalendar.selectedDates[0]?.toJSON(),
+      this.#endDateCalendar.selectedDates[0]?.toJSON(),
     ];
   }
 
@@ -102,12 +105,12 @@ export default class PointTimeView extends View {
    */
   handleKeydown(event) {
     // FIXME: Закрытие по Esc после выбора даты
-    // if (event.key === 'Escape' && (this.#startDateCalendar.isOpen || this.#endDateCalendar.isOpen)) {
-    //   event.stopImmediatePropagation();
+    if (event.key === 'Escape' && (this.#startDateCalendar.isOpen || this.#endDateCalendar.isOpen)) {
+      event.stopImmediatePropagation();
 
-    //   this.#startDateCalendar.close();
-    //   this.#endDateCalendar.close();
-    // }
+      this.#startDateCalendar.close();
+      this.#endDateCalendar.close();
+    }
   }
 }
 

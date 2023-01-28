@@ -78,11 +78,14 @@ export default class NewPointEditorView extends View {
 
   open() {
     this.listView.prepend(this);
+    this.pointTimeView.createCalendars();
+
     document.addEventListener('keydown', this);
   }
 
   close(notify = true) {
     this.remove();
+    this.pointTimeView.destroyCalendars();
     document.removeEventListener('keydown', this);
 
     if(notify) {

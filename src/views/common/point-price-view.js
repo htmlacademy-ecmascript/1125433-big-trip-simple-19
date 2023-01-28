@@ -35,7 +35,7 @@ export default class PointPriceView extends View {
   }
 
   getValue() {
-    return (this.querySelector('input')).value;
+    return (this.querySelector('input')).valueAsNumber;
   }
 }
 
