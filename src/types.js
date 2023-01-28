@@ -116,3 +116,7 @@
  * @prop {string} title
  * @prop {string} value
  */
+/**
+ * @typedef {import('flatpickr/dist/types/instance').Instance} Calendar
+ * @typedef {import('flatpickr/dist/types/options').Options} CalendarConfig
+ */

@@ -25,6 +25,32 @@ export default class NewPointEditorView extends View {
      * @type {PointTypeView}
      */
     this.pointTypeView = this.querySelector(String(PointTypeView));
+
+    /**
+     * @type {PointDestinationView}
+     */
+    this.pointDestinationView = this.querySelector(String(PointDestinationView));
+
+    /**
+     * @type {PointTimeView}
+     */
+    this.pointTimeView = this.querySelector(String(PointTimeView));
+
+    /**
+     * @type {PointPriceView}
+     */
+    this.pointPriceView = this.querySelector(String(PointPriceView));
+
+    /**
+     * @type {PointOffersView}
+     */
+    this.pointOffersView = this.querySelector(String(PointOffersView));
+
+    /**
+     * @type {PointDescriptionView}
+     */
+    this.pointDescriptionView = this.querySelector(String(PointDescriptionView));
+
   }
 
   /**
@@ -43,20 +69,23 @@ export default class NewPointEditorView extends View {
           <button class="event__reset-btn" type="reset">Cancel</button>
         </header>
         <section class="event__details">
-          <${PointOffersView} style="display:block"></${PointOffersView}>
-          <${PointDescriptionView} style="display:block"></${PointDescriptionView}>
+          <${PointOffersView}></${PointOffersView}> 
+          <${PointDescriptionView}></${PointDescriptionView}>
         </section>
       </form>
     `;
-  }
+  }//TODO add css styles display block to PointOffersView and PointDescriptionView
 
   open() {
     this.listView.prepend(this);
+    this.pointTimeView.createCalendars();
+
     document.addEventListener('keydown', this);
   }
 
   close(notify = true) {
     this.remove();
+    this.pointTimeView.destroyCalendars();
     document.removeEventListener('keydown', this);
 
     if(notify) {
