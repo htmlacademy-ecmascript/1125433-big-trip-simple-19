@@ -76,6 +76,13 @@ export default class NewPointEditorPresenter extends Presenter {
   }
 
   /**
+   * @param {PointAdapter} point
+   */
+  async save(point) {
+    await this.pointsModel.add(point);
+  }
+
+  /**
    * @override
    */
   handleNavigation() {
@@ -97,9 +104,41 @@ export default class NewPointEditorPresenter extends Presenter {
 
   /**
    * @param {SubmitEvent} event
-  */
-  handleViewSubmit(event) {
+   */
+  async handleViewSubmit(event) {
     event.preventDefault();
+
+    this.view.awaitSave(true);
+
+    try {
+      const point = this.pointsModel.item();
+
+      const [startDate, endDate] = this.view.pointTimeView.getValues();
+      const destinationName = this.view.pointDestinationView.getValue();
+      const destination = this.destinationsModel.findBy('name', destinationName);
+
+      point.type = this.view.pointTypeView.getValue();
+      point.destinationId = destination?.id;
+      point.startDate = startDate;
+      point.endDate = endDate;
+      point.basePrice = Number(this.view.pointPriceView.getValue());
+      point.offerIds = this.view.pointOffersView.getValues();
+
+      await this.save(point);
+      this.view.close();
+    }
+
+    catch (exception) {
+      this.view.shake();
+
+      if (exception.cause?.error) {
+        const [{fieldName}] = exception.cause.error;
+
+        this.view.findByName(fieldName)?.focus();
+      }
+    }
+
+    this.view.awaitSave(false);
   }
 
   handleViewReset() {

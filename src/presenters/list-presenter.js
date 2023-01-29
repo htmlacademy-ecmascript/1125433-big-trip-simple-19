@@ -12,6 +12,7 @@ export default class ListPresenter extends Presenter {
     this.updateView();
     this.pointsModel.addEventListener('filter', this.handlePointModelFilter.bind(this));
     this.pointsModel.addEventListener('sort', this.handlePointModelSort.bind(this));
+    this.pointsModel.addEventListener('add', this.handlePointModelAdd.bind(this));
   }
 
   updateView() {
@@ -38,6 +39,7 @@ export default class ListPresenter extends Presenter {
       }));
 
     return {
+      id: point.id,
       date: formatDate(point.startDate),
       icon: pointIconMap[point.type],
       title: `${pointTitleMap[point.type]} ${destination.name}`,
@@ -56,5 +58,12 @@ export default class ListPresenter extends Presenter {
 
   handlePointModelSort() {
     this.updateView();
+  }
+
+  /**
+   * @param {CustomEvent<PointAdapter>} event
+   */
+  handlePointModelAdd(event) {
+    this.updateView(event.detail);
   }
 }

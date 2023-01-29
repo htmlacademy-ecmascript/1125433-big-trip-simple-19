@@ -104,7 +104,6 @@ export default class PointTimeView extends View {
    * @param {KeyboardEvent} event
    */
   handleKeydown(event) {
-    // FIXME: Закрытие по Esc после выбора даты
     if (event.key === 'Escape' && (this.#startDateCalendar.isOpen || this.#endDateCalendar.isOpen)) {
       event.stopImmediatePropagation();
 

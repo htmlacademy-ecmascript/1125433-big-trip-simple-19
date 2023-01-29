@@ -6,6 +6,8 @@ import PointTimeView from './common/point-time-view';
 import PointPriceView from './common/point-price-view';
 import PointOffersView from './common/point-offers-view';
 import PointDescriptionView from './common/point-description-view';
+import { saveButtonTextMap } from '../maps';
+import UiBlockerView from './ui-blocker-view';
 
 
 /**
@@ -51,6 +53,7 @@ export default class NewPointEditorView extends View {
      */
     this.pointDescriptionView = this.querySelector(String(PointDescriptionView));
 
+    this.uiBlockerView = new UiBlockerView();
   }
 
   /**
@@ -58,7 +61,7 @@ export default class NewPointEditorView extends View {
   */
   createHtml() {
     return html`
-      <form class="event event--edit" action="#" method="post">
+      <form class="event event--edit" action="#" method="post" novalidate>
         <header class="event__header">
           <${PointTypeView}></${PointTypeView}>
           <${PointDestinationView}></${PointDestinationView}>
@@ -94,12 +97,29 @@ export default class NewPointEditorView extends View {
   }
 
   /**
+   * @param {boolean} flag
+   */
+  awaitSave(flag) {
+    const text = saveButtonTextMap[Number(flag)];
+
+    this.querySelector('.event__save-btn').textContent = text;
+    this.uiBlockerView.toggle(flag);
+  }
+
+  /**
    * @param {KeyboardEvent} event
    */
   handleEvent(event) {
     if(event.key === 'Escape') {
       this.close();
     }
+  }
+
+  /**
+   * @param {string} name
+   */
+  findByName(name) {
+    return this.querySelector('form').elements[name];
   }
 }
 

@@ -10,6 +10,7 @@ export default class PointView extends View {
     super(state);
 
     this.classList.add('trip-events__item');
+    this.dataset.id = state.id;
     this.setOffers(state.offers);
   }
 

@@ -23,4 +23,9 @@ export const PointType = {
   RESTAURANT: 'restaurant'
 };
 
+export const ButtonState = {
+  DEFAULT: 0,
+  PRESSED: 1,
+};
+
 
