@@ -1,5 +1,6 @@
 import {pointIconMap, pointTitleMap} from '../maps';
 import {formatDate, formatNumber, formatTime} from '../utils';
+import PointView from '../views/point-view';
 import Presenter from './presenter';
 
 /**
@@ -10,9 +11,14 @@ export default class ListPresenter extends Presenter {
     super(...arguments);
 
     this.updateView();
+
+    this.view.addEventListener('edit', this.handleViewEdit.bind(this));
+
     this.pointsModel.addEventListener('filter', this.handlePointModelFilter.bind(this));
     this.pointsModel.addEventListener('sort', this.handlePointModelSort.bind(this));
     this.pointsModel.addEventListener('add', this.handlePointModelAdd.bind(this));
+    this.pointsModel.addEventListener('update', this.handlePointModelUpdate.bind(this));
+    this.pointsModel.addEventListener('delete', this.handlePointModelDelete.bind(this));
   }
 
   updateView() {
@@ -52,6 +58,13 @@ export default class ListPresenter extends Presenter {
     };
   }
 
+  /**
+   * @param {CustomEvent & {target: PointView}} event
+   */
+  handleViewEdit(event) {
+    this.navigate('/edit', event.target.dataset);
+  }
+
   handlePointModelFilter() {
     this.updateView();
   }
@@ -66,4 +79,19 @@ export default class ListPresenter extends Presenter {
   handlePointModelAdd(event) {
     this.updateView(event.detail);
   }
+
+  /**
+   * @param {CustomEvent<{newItem: PointAdapter}>} event
+   */
+  handlePointModelUpdate(event) {
+    this.updateView(event.detail.newItem);
+  }
+
+  /**
+   * @param {CustomEvent<PointAdapter>} event
+   */
+  handlePointModelDelete(event) {
+    this.updateView(event.detail);
+  }
+
 }
