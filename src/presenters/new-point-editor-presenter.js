@@ -142,7 +142,12 @@ export default class NewPointEditorPresenter extends Presenter {
     this.view.awaitSave(false);
   }
 
-  handleViewReset() {
+  /**
+   * @param {Event} event
+   */
+  handleViewReset(event) {
+    event.preventDefault();
+
     this.view.close();
   }
 
