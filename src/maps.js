@@ -13,6 +13,11 @@ const filterCallbackMap = {
   [FilterType.FUTURE]: (point) => Date.now() < point.endDateAsNumber,
 };
 
+const emptyListTextMap = {
+  [FilterType.EVERYTHING]: 'Click New Event to create your first point',
+  [FilterType.FUTURE]: 'There are no future events now',
+};
+
 const sortTitleMap = {
   [SortType.DAY]: 'Day',
   [SortType.EVENT]: 'Event',
@@ -66,6 +71,8 @@ const deleteButtonTextMap = {
   [ButtonState.PRESSED]: 'Deleting...',
 };
 
+
+
 export {
   filterTitleMap,
   filterCallbackMap,
@@ -75,5 +82,6 @@ export {
   pointTitleMap,
   pointIconMap,
   saveButtonTextMap,
-  deleteButtonTextMap
+  deleteButtonTextMap,
+  emptyListTextMap
 };

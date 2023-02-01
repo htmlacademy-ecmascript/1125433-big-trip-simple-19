@@ -23,6 +23,7 @@ import SortPresenter from './presenters/sort-presenter';
 import NewPointButtonPresenter from './presenters/new-point-button-presenter';
 import NewPointEditorPresenter from './presenters/new-point-editor-presenter';
 import PointEditorPresenter from './presenters/point-editor-presenter';
+import EmptyListPresenter from './presenters/empty-list-presenter';
 
 import SortView from './views/sort-view';
 
@@ -61,6 +62,7 @@ const newPointButtonView = document.querySelector('.trip-main__event-add-btn');
 const filterView = document.querySelector(String(FilterView));
 const listView = document.querySelector(String(ListView));
 const sortView = document.querySelector(String(SortView));
+const emptyListView = document.querySelector('.trip-events__msg');
 const newPointEditorView = new NewPointEditorView(listView);
 const pointEditorView = new PointEditorView(listView);
 const {log} = console;
@@ -72,6 +74,7 @@ Promise.all(
     new NewPointButtonPresenter(newPointButtonView, models);
     new FilterPresenter(filterView, models);
     new SortPresenter(sortView, models);
+    new EmptyListPresenter(emptyListView, models);
     new ListPresenter(listView, models);
     new NewPointEditorPresenter(newPointEditorView, models);
     new PointEditorPresenter(pointEditorView, models);
