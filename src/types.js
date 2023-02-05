@@ -45,7 +45,7 @@
  * @typedef {import('./adapters/adapter').default} Adapter
  * @typedef {import('./adapters/point-adapter').default} PointAdapter
  * @typedef {import('./adapters/destination-adapter').default} DestinationAdapter
- * @typedef {import('./adapters/offer-group-adapter').default} OfferGroupAdapter
+ * @typedef {import('./adapters/offergroup-adapter').default} OfferGroupAdapter
  */
 
 /**
@@ -79,6 +79,7 @@
 
 /**
  * @typedef PointViewState
+ * @prop {string} id
  * @prop {string} date
  * @prop {string} icon
  * @prop {string} title
@@ -95,6 +96,7 @@
  * @typedef {import('./views/sort-view').default} SortView
  * @typedef {import('./views/list-view').default} ListView
  * @typedef {import('./views/new-point-editor-view').default} NewPointEditorView
+ * @typedef {import('./views/point-editor-view').default} PointEditorView
  */
 
 /**
