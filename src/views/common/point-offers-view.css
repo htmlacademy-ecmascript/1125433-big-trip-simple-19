@@ -1,0 +1,7 @@
+.event__section--offers {
+  display: block;
+}
+
+.event__section--offers[hidden] {
+  display: none;
+}

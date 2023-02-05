@@ -1,5 +1,6 @@
 import {html} from '../utils';
 import RadioGroupView from './radio-group-view';
+import './sort-view.css';
 
 export default class SortView extends RadioGroupView {
   constructor() {

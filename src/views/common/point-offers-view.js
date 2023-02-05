@@ -1,5 +1,6 @@
 import View from './../view';
 import {html} from '../../utils';
+import './point-offers-view.css';
 
 export default class PointOffersView extends View {
   constructor() {
