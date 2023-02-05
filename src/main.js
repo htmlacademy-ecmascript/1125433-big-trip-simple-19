@@ -65,12 +65,11 @@ const sortView = document.querySelector(String(SortView));
 const emptyListView = document.querySelector('.trip-events__msg');
 const newPointEditorView = new NewPointEditorView(listView);
 const pointEditorView = new PointEditorView(listView);
-const {log} = console;
 
 Promise.all(
   models.map((model) => model.ready())
 )
-  .then( async () => {
+  .then(() => {
     new NewPointButtonPresenter(newPointButtonView, models);
     new FilterPresenter(filterView, models);
     new SortPresenter(sortView, models);
@@ -80,7 +79,7 @@ Promise.all(
     new PointEditorPresenter(pointEditorView, models);
   })
 
-  .catch((error) => {
-    log(error);
+  .catch((exception) => {
+    emptyListView.textContent = exception;
   });
 

@@ -1,6 +1,5 @@
 import {pointIconMap, pointTitleMap} from '../maps';
 import {formatDate, formatNumber, formatTime} from '../utils';
-import PointView from '../views/point-view';
 import Presenter from './presenter';
 
 /**
@@ -21,11 +20,21 @@ export default class ListPresenter extends Presenter {
     this.pointsModel.addEventListener('delete', this.handlePointModelDelete.bind(this));
   }
 
-  updateView() {
+  /**
+   * @param {PointAdapter} [targetPoint]
+   */
+  updateView(targetPoint) {
     const points = this.pointsModel.list();
     const pointViewStates = points.map(this.createPointViewState, this);
+    const pointViews = this.view.setItems(pointViewStates);
 
-    this.view.setItems(pointViewStates);
+    if (targetPoint) {
+      this.view.findById(targetPoint.id)?.fadeInLeft();
+    } else {
+      pointViews.forEach((pointView, index) => {
+        pointView.fadeInLeft({delay: 100 * index});
+      });
+    }
   }
 
   /**
@@ -35,7 +44,7 @@ export default class ListPresenter extends Presenter {
     const destination = this.destinationsModel.findById(point.destinationId);
     const offerGroup = this.offerGroupsModel.findById(point.type);
 
-    const OfferViewStates = offerGroup.items
+    const offerViewStates = offerGroup.items
       .filter((offer) =>
         point.offerIds.includes(offer.id)
       )
@@ -54,7 +63,7 @@ export default class ListPresenter extends Presenter {
       endTime: formatTime(point.endDate),
       endDate: point.endDate,
       basePrice: formatNumber(point.basePrice),
-      offers: OfferViewStates,
+      offers: offerViewStates,
     };
   }
 
@@ -93,5 +102,4 @@ export default class ListPresenter extends Presenter {
   handlePointModelDelete(event) {
     this.updateView(event.detail);
   }
-
 }

@@ -77,12 +77,12 @@ export default class NewPointEditorView extends View {
         </section>
       </form>
     `;
-  }//TODO add css styles display block to PointOffersView and PointDescriptionView
+  }
 
   open() {
     this.listView.prepend(this);
     this.pointTimeView.createCalendars();
-
+    this.fadeInRight();
     document.addEventListener('keydown', this);
   }
 

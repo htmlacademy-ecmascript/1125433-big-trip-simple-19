@@ -10,6 +10,7 @@ export default class ListView extends View {
     const views = states.map((state) => new PointView(state));
 
     this.replaceChildren(...views);
+    return views;
   }
 
   /**

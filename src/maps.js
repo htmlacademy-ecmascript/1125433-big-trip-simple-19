@@ -71,8 +71,6 @@ const deleteButtonTextMap = {
   [ButtonState.PRESSED]: 'Deleting...',
 };
 
-
-
 export {
   filterTitleMap,
   filterCallbackMap,
