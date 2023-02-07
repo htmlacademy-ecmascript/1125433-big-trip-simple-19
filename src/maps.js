@@ -28,10 +28,10 @@ const sortTitleMap = {
 
 const sortDisabilityMap = {
   [SortType.DAY]: false,
-  [SortType.EVENT]: false,
-  [SortType.TIME]: false,
+  [SortType.EVENT]: true,
+  [SortType.TIME]: true,
   [SortType.PRICE]: false,
-  [SortType.OFFERS]: false,
+  [SortType.OFFERS]: true,
 };
 
 /**
