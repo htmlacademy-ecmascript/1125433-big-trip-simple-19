@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import {escape} from 'he';
 /**
-*@param {TemplateStringArray} strings
-*@param {...*} values
+  *@param {TemplateStringsArray} string
+  *@param {...*} values
 */
 export const html = (string, ...values) => string.reduce((before, after, index) => {
   const value = values[index - 1];
@@ -12,7 +12,7 @@ export const html = (string, ...values) => string.reduce((before, after, index) 
 /**
  * @param {string} value
  */
-export const formatDate = (value) => dayjs(value).format('DDMMM');
+export const formatDate = (value) => dayjs(value).format('M DDD');
 
 /**
  * @param {string} value

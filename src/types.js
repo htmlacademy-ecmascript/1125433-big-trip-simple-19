@@ -45,7 +45,7 @@
  * @typedef {import('./adapters/adapter').default} Adapter
  * @typedef {import('./adapters/point-adapter').default} PointAdapter
  * @typedef {import('./adapters/destination-adapter').default} DestinationAdapter
- * @typedef {import('./adapters/offergroup-adapter').default} OfferGroupAdapter
+ * @typedef {import('./adapters/offer-group-adapter').default} OfferGroupAdapter
  */
 
 /**

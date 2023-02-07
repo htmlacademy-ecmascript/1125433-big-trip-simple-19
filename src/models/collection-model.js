@@ -11,14 +11,14 @@ export default class CollectionModel extends Model {
   #sort;
 
   /**
-   * @type {Item[]}  намечаем что будем получать из модели
+   * @type {Item[]}
    */
   #items;
 
   /**
-   * @param {Object} setup объект
-   * @param {Store<Item>} setup.store хранилище объектов(айтемов)
-   * @param {AdaptCallback<Item,ItemAdapter>} setup.adapt колбек для преобразования объектов из хранилища в нужный вид
+   * @param {Object} setup
+   * @param {Store<Item>} setup.store
+   * @param {AdaptCallback<Item,ItemAdapter>} setup.adapt
    * @param {FilterCallback<ItemAdapter>} [setup.filter]
    * @param {SortCallback<ItemAdapter>} [setup.sort]
    */
@@ -36,7 +36,7 @@ export default class CollectionModel extends Model {
    * @override
    */
   async ready() {
-    this.#items = await this.#store.list(); /**Получили коллекцию и дальше работаем синхронно */
+    this.#items = await this.#store.list();
   }
 
   /**
@@ -77,17 +77,17 @@ export default class CollectionModel extends Model {
   }
 
   listAll() {
-    return this.#items.map(this.#adapt); /**возвращаем садаптированное значение, чтобы работать с тем, что нам удобно, а не с тем говном что шлет сервер */
+    return this.#items.map(this.#adapt);
   }
 
   /**
    * @param {number} [index]
    */
   item(index) {
-    if(arguments.length) { /**проверяем, если аргументы есть, значит выполнится условие */
+    if(arguments.length) {
       const item = this.#items[index];
 
-      return item && this.#adapt(item); /** если вернется item то запишется его адаптированое значение. */
+      return item && this.#adapt(item);
     }
 
     return this.#adapt();
@@ -161,7 +161,7 @@ export default class CollectionModel extends Model {
     const detail = this.item(index);
 
     this.#items.splice(index, 1);
-    this.dispatchEvent(new CustomEvent('delete'));
+    this.dispatchEvent(new CustomEvent('delete', {detail}));
     return detail;
   }
 }

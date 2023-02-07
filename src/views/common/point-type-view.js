@@ -63,7 +63,7 @@ export default class PointTypeView extends RadioGroupView {
         <label
           class="event__type-label  event__type-label--${state.value}"
           for="event-type-${state.value}" tabindex="-1">
-          ${state.value}
+          ${state.title}
         </label>
       </div>
     `;
