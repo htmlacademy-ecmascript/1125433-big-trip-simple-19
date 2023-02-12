@@ -12,7 +12,7 @@ export const html = (string, ...values) => string.reduce((before, after, index) 
 /**
  * @param {string} value
  */
-export const formatDate = (value) => dayjs(value).format('M DDD');
+export const formatDate = (value) => dayjs(value).format('MMM D');
 
 /**
  * @param {string} value
